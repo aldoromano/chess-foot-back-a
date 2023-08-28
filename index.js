@@ -1,6 +1,6 @@
 const express = require("express");
-const cors = require("cors");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 require("dotenv").config();
 
@@ -11,13 +11,8 @@ app.use(cors());
 
 mongoose.connect(process.env.MONGODB_URI);
 
-const routeAgency = require("./routes/agency");
-const routeOffer = require("./routes/offer");
-const routeReservation = require("./routes/reservation");
-
-app.use(routeAgency);
-app.use(routeOffer);
-app.use(routeReservation);
+const routeUser = require("./routes/user");
+app.use(routeUser);
 
 app.all("*", (req, res) => {
   res.status(404).json({ message: "Page not found" });
