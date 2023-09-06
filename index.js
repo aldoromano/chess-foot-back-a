@@ -18,7 +18,7 @@ app.use(routeUser);
 app.use(routePlay);
 
 app.all("*", (req, res) => {
-  res.status(404).json({ message: "Page not found" });
+  res.status(404).json({ message: "Page GET not found" });
 });
 
 app.listen(process.env.PORT, () => {
