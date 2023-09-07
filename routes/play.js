@@ -3,7 +3,7 @@ const express = require("express");
 const router = express.Router();
 
 router.post("/play", async (req, res) => {
-  console.log("play ...", req.body);
+  console.log("play ...");
   try {
     const { arrayData, ballPosition } = req.body;
 
@@ -44,7 +44,7 @@ router.post("/play", async (req, res) => {
         } else {
           playerRed = arrayData[i][j];
         }
-        // On avance le joueur
+        // On avance le joueur rouge d'une case
         arrayNew[i][j] = arrayNew[i][j].replace(playerRed, "");
         arrayNew[i + 1][j] =
           arrayData[i + 1][j].length > 0
@@ -52,9 +52,9 @@ router.post("/play", async (req, res) => {
             : playerRed;
       }
     }
-    // On renvoie l'objet user
 
-    console.log("arrayNew -> ", arrayNew);
+    // On renvoie le tableau avec le déplacement des joueurs rouges
+    //console.log("arrayNew -> ", arrayNew);
     res.json(arrayNew);
   } catch (error) {
     res.status(400).json({ message: error.message });
